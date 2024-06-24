@@ -1,27 +1,20 @@
-# NCD Gateway Firmware Flashing Utility
-
-Update the firmware in your [NCD](https://ncd.io) Micro Gateway, Mega Modem or WiFi Sensor.
-
-https://ncd.io/how-to-ncd-grepy
+# ESP32 MacOS flashing script
 
 ## Setup
 
-Install the pre-requisite software.
+Install if required:
 
 1. Install [Python 3](https://www.python.org)
 2. Install [PySerial](https://pythonhosted.org/pyserial/pyserial.html#installation)
 3. Install the [Silicon Labs USB to UART Bridge VCP driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)
-4. [Download this Python script](https://github.com/telliottosceola/Flash_Script/archive/refs/heads/master.zip). Unzip the download.
 
-Connect your gateway to your computer using a USB cable.
+Connect your COM adapter
 
 ## Run the Script
 
-**Windows**: Double click *run.bat*.
+**Linux / MacOS**: Using the terminal, run `python3 run.py`.
 
-**Linux / MacOS**: Using the terminal, run `python3 ncd_flasher.py`.
-
-Select the COM port for your gateway.
+Select the COM port
 
 Select the firmware you wish to flash to the gateway.
 
