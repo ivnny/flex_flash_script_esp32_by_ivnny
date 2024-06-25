@@ -84,4 +84,4 @@ print('press a BOOT button to start flashing if not started automatically')
 print('')
 print('')
 
-espmodule = esptool.main(['--chip', 'esp32', '--port', port_array.get(target_port_key), '--baud', '921600', '--before', 'default_reset', '--after', 'hard_reset', 'write_flash', '-z', '--flash_mode', 'dio', '--flash_freq', '40m', '--flash_size', 'detect', '0x1000', 'firmwares/bootloader.bin', '0x8000', 'firmwares/partitions.bin', '0x10000', 'firmwares/firmware.bin'])
+espmodule = esptool.main(['--chip', 'esp32', '--port', port_array.get(target_port_key), '--baud', '921600', '--before', 'default_reset', '--after', 'hard_reset', 'write_flash', '-z', '--flash_mode', 'dio', '--flash_freq', '40m', '--flash_size', 'detect', '0x1000', 'firmwares/bootloader.bin', '0x8000', 'firmwares/partition-table.bin', '0x10000', 'firmwares/ble_ibeacon_demo.bin'])
