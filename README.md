@@ -14,7 +14,11 @@ Connect your COM adapter
 ## Run the Script
 Put you files .bin to `firmwares` folder
 
-**Linux / MacOS**: Using the terminal, run `python3 run.py`.
+**Linux / MacOS**: Using the terminal, run 
+
+- with path: `python3 run.py firmwares/bootloader.bin firmwares/partition-table.bin firmwares/ble_ibeacon_demo.bin`.
+- default: `python3 run.py`
+- help: `python3 run.py --h`
 
 Select the COM port
 
