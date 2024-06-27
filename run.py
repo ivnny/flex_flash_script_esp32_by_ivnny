@@ -54,18 +54,11 @@ def flashFirmware(answers):
 
 port_array = {}
 # port_array.append('Cancel')
-if(len(sys.argv)>1):
-    print('sys args present')
-    print(sys.argv[1])
-    if(sys.argv[1] == "dev" or sys.argv[1] == "-dev"):
-        print('running dev')
-        dev = True
-    if(sys.argv[1] == "ns" or sys.argv[1] == "-ns"):
-        print('not flashing spiffs')
-        spiffs = False
-    if(sys.argv[1] == "-sota" or sys.argv[1] == "sota"):
-        print('Sota Firmware');
-        sota = True
+
+
+if(sys.argv[1] == "help" or sys.argv[1] == "--h" or len(sys.argv) < 2):
+    print('python run.py firmwares/bootloader.bin firmwares/partition-table.bin firmwares/ble_ibeacon_demo.bin')
+    exit()
 
 print('COM ports:')
 for serial_port in serial_ports():
@@ -84,4 +77,11 @@ print('press a BOOT button to start flashing if not started automatically')
 print('')
 print('')
 
-espmodule = esptool.main(['--chip', 'esp32', '--port', port_array.get(target_port_key), '--baud', '921600', '--before', 'default_reset', '--after', 'hard_reset', 'write_flash', '-z', '--flash_mode', 'dio', '--flash_freq', '40m', '--flash_size', 'detect', '0x1000', 'firmwares/bootloader.bin', '0x8000', 'firmwares/partition-table.bin', '0x10000', 'firmwares/ble_ibeacon_demo.bin'])
+
+
+if(len(sys.argv) == 4):
+    print('files are correct')
+    espmodule = esptool.main(['--chip', 'esp32', '--port', port_array.get(target_port_key), '--baud', '921600', '--before', 'default_reset', '--after', 'hard_reset', 'write_flash', '-z', '--flash_mode', 'dio', '--flash_freq', '40m', '--flash_size', 'detect', '0x1000', sys.argv[1], '0x8000', sys.argv[2], '0x10000', sys.argv[3]])
+else:
+    print('no sys args present')
+    espmodule = esptool.main(['--chip', 'esp32', '--port', port_array.get(target_port_key), '--baud', '921600', '--before', 'default_reset', '--after', 'hard_reset', 'write_flash', '-z', '--flash_mode', 'dio', '--flash_freq', '40m', '--flash_size', 'detect', '0x1000', "firmwares/bootloader.bin", '0x8000',  "firmwares/partition-table.bin", '0x10000', "firmwares/ble_ibeacon_demo.bin"])
